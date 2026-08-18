@@ -8,6 +8,26 @@ package com.mycompany.taller1.biblioteca.git;
  *
  * @author PC
  */
-public class Libro {
-    
+public class Libro extends Material {
+
+    private int cantidadPaginas;
+
+    public Libro(String codigo, String titulo, String autor, int cantidadPaginas) {
+        super(codigo, titulo, autor);
+        this.cantidadPaginas = cantidadPaginas;
+    }
+
+    public int getCantidadPaginas() {
+        return cantidadPaginas;
+    }
+
+    public void setCantidadPaginas(int cantidadPaginas) {
+        this.cantidadPaginas = cantidadPaginas;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + ", Cantidad de páginas: " + cantidadPaginas;
+    }
 }
