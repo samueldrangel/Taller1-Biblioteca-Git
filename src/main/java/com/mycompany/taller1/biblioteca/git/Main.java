@@ -81,4 +81,19 @@ public class Main {
         }
         System.out.println("Cliente no encontrado.");
     }
+        
+        public static void eliminarCliente() {
+        System.out.println("\n--- ELIMINAR CLIENTE ---");
+        System.out.print("Ingrese el ID del cliente a eliminar: ");
+        String idBusqueda = sc.nextLine();
+
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getId().equals(idBusqueda)) {
+                clientes.remove(i);
+                System.out.println("¡Cliente eliminado de la base de datos!");
+                return;
+            }
+        }
+        System.out.println("Cliente no encontrado.");
+    }
 }
