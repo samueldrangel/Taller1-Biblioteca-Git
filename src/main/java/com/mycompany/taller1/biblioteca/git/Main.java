@@ -238,5 +238,27 @@ public class Main {
 
         System.out.println("Préstamo registrado correctamente.");
     }
+    
+        public static void devolucion() {
+
+        System.out.println("\n--- DEVOLUCIÓN DE LIBRO ---");
+
+        System.out.print("Ingrese el código del libro: ");
+        String codigoLibro = sc.nextLine();
+
+        for (Prestamo prestamo : prestamos) {
+
+            if (prestamo.getLibro().getCodigo().equalsIgnoreCase(codigoLibro)
+                    && prestamo.isActivo()) {
+
+                prestamo.setActivo(false);
+
+                System.out.println("Libro devuelto correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("No se encontró un préstamo activo para ese libro.");
+    }
 
 }
