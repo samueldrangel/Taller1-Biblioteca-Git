@@ -14,6 +14,7 @@ public class Main {
 
     static ArrayList<Cliente> clientes = new ArrayList<>();
     static ArrayList<Libro> libros = new ArrayList<>();
+    static ArrayList<Prestamo> prestamos = new ArrayList<>();
 
     static Scanner sc = new Scanner(System.in);
 
@@ -180,7 +181,7 @@ public class Main {
 
         System.out.println("Libro actualizado correctamente.");
     }
-    
+
     public static void eliminarLibro() {
 
         System.out.println("\n--- ELIMINAR LIBRO ---");
@@ -198,6 +199,44 @@ public class Main {
         libros.remove(libro);
 
         System.out.println("Libro eliminado correctamente.");
+    }
+
+    public static void crearPrestamo() {
+
+        System.out.println("\n--- REGISTRAR PRÉSTAMO ---");
+
+        System.out.print("Ingrese el ID del cliente: ");
+        String idCliente = sc.nextLine();
+
+        Cliente clienteEncontrado = null;
+
+        for (Cliente cliente : clientes) {
+            if (cliente.getId().equalsIgnoreCase(idCliente)) {
+                clienteEncontrado = cliente;
+                break;
+            }
+        }
+
+        if (clienteEncontrado == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+
+        System.out.print("Ingrese el código del libro: ");
+        String codigoLibro = sc.nextLine();
+
+        Libro libroEncontrado = buscarLibro(codigoLibro);
+
+        if (libroEncontrado == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        Prestamo prestamo = new Prestamo(clienteEncontrado, libroEncontrado);
+
+        prestamos.add(prestamo);
+
+        System.out.println("Préstamo registrado correctamente.");
     }
 
 }
