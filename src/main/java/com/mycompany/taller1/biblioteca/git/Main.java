@@ -180,5 +180,24 @@ public class Main {
 
         System.out.println("Libro actualizado correctamente.");
     }
+    
+    public static void eliminarLibro() {
+
+        System.out.println("\n--- ELIMINAR LIBRO ---");
+
+        System.out.print("Ingrese el código del libro: ");
+        String codigo = sc.nextLine();
+
+        Libro libro = buscarLibro(codigo);
+
+        if (libro == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        libros.remove(libro);
+
+        System.out.println("Libro eliminado correctamente.");
+    }
 
 }
