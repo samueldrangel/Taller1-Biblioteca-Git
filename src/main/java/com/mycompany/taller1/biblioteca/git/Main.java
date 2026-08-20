@@ -18,9 +18,135 @@ public class Main {
 
     static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        // Aquí irá el menú (Fase 8)
+public static void main(String[] args) {
+int opcionPrincipal = 0;
 
+        do {
+            System.out.println("\n==========================================");
+            System.out.println("     SISTEMA DE GESTIÓN DE BIBLIOTECA     ");
+            System.out.println("==========================================");
+            System.out.println("1. Gestión de Clientes");
+            System.out.println("2. Gestión de Libros");
+            System.out.println("3. Gestión de Préstamos");
+            System.out.println("4. Salir");
+            System.out.print("Seleccione una opción: ");
+
+            try {
+                opcionPrincipal = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                opcionPrincipal = -1;
+            }
+
+            switch (opcionPrincipal) {
+                case 1:
+                    menuClientes();
+                    break;
+                case 2:
+                    menuLibros();
+                    break;
+                case 3:
+                    menuPrestamos();
+                    break;
+                case 4:
+                    System.out.println("\n¡Gracias por usar el sistema de biblioteca!");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Intente de nuevo.");
+            }
+        } while (opcionPrincipal != 4);
+    }
+
+    // --- SUBMENÚS DE NAVEGACIÓN ---
+
+    private static void menuClientes() {
+        int opcion = 0;
+        do {
+            System.out.println("\n--- SUBMENÚ: GESTIÓN DE CLIENTES ---");
+            System.out.println("1. Crear Cliente");
+            System.out.println("2. Listar Clientes");
+            System.out.println("3. Buscar Cliente");
+            System.out.println("4. Actualizar Cliente");
+            System.out.println("5. Eliminar Cliente");
+            System.out.println("6. Volver al Menú Principal");
+            System.out.print("Seleccione una opción: ");
+
+            try {
+                opcion = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                opcion = -1;
+            }
+
+            switch (opcion) {
+                case 1: crearCliente(); break;
+                case 2: listarClientes(); break;
+                case 3: buscarCliente(); break;
+                case 4: actualizarCliente(); break;
+                case 5: eliminarCliente(); break;
+                case 6: System.out.println("Volviendo al menú principal..."); break;
+                default: System.out.println("Opción inválida.");
+            }
+        } while (opcion != 6);
+    }
+
+    private static void menuLibros() {
+        int opcion = 0;
+        do {
+            System.out.println("\n--- SUBMENÚ: GESTIÓN DE LIBROS ---");
+            System.out.println("1. Crear Libro");
+            System.out.println("2. Listar Libros");
+            System.out.println("3. Buscar Libro");
+            System.out.println("4. Actualizar Libro");
+            System.out.println("5. Eliminar Libro");
+            System.out.println("6. Volver al Menú Principal");
+            System.out.print("Seleccione una opción: ");
+
+            try {
+                opcion = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                opcion = -1;
+            }
+
+            switch (opcion) {
+                case 1: crearLibro(); break;
+                case 2: listarLibros(); break;
+                case 3: 
+                    System.out.print("Ingrese el código a buscar: ");
+                    String cod = sc.nextLine();
+                    Libro l = buscarLibro(cod);
+                    System.out.println(l != null ? l : "Libro no encontrado.");
+                    break;
+                case 4: actualizarLibro(); break;
+                case 5: eliminarLibro(); break;
+                case 6: System.out.println("Volviendo al menú principal..."); break;
+                default: System.out.println("Opción inválida.");
+            }
+        } while (opcion != 6);
+    }
+
+    private static void menuPrestamos() {
+        int opcion = 0;
+        do {
+            System.out.println("\n--- SUBMENÚ: GESTIÓN DE PRÉSTAMOS ---");
+            System.out.println("1. Registrar Préstamo");
+            System.out.println("2. Registrar Devolución");
+            System.out.println("3. Listar Préstamos Activos");
+            System.out.println("4. Volver al Menú Principal");
+            System.out.print("Seleccione una opción: ");
+
+            try {
+                opcion = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                opcion = -1;
+            }
+
+            switch (opcion) {
+                case 1: crearPrestamo(); break;
+                case 2: devolucion(); break;
+                case 3: listarPrestamos(); break;
+                case 4: System.out.println("Volviendo al menú principal..."); break;
+                default: System.out.println("Opción inválida.");
+            }
+        } while (opcion != 4);
     }
 
     public static void crearCliente() {
