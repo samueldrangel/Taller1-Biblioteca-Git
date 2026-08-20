@@ -19,9 +19,9 @@ public class Main {
 
     public static void main(String[] args) {
         // Aquí irá el menú (Fase 8)
-        
+
     }
-    
+
     public static void crearCliente() {
         System.out.println("\n--- CREAR CLIENTE ---");
         System.out.print("Ingrese ID: ");
@@ -37,7 +37,8 @@ public class Main {
         clientes.add(nuevoCliente);
         System.out.println("¡Cliente registrado con éxito!");
     }
-        public static void listarClientes() {
+
+    public static void listarClientes() {
         System.out.println("\n--- LISTA DE CLIENTES ---");
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes registrados en el sistema.");
@@ -47,7 +48,8 @@ public class Main {
             System.out.println("ID: " + c.getId() + " | Nombre: " + c.getNombre() + " | Teléfono: " + c.getTelefono() + " | Email: " + c.getEmail());
         }
     }
-        public static void buscarCliente() {
+
+    public static void buscarCliente() {
         System.out.println("\n--- BUSCAR CLIENTE ---");
         System.out.print("Ingrese el ID del cliente a buscar: ");
         String idBusqueda = sc.nextLine();
@@ -64,7 +66,8 @@ public class Main {
         }
         System.out.println("Cliente no encontrado.");
     }
-        public static void actualizarCliente() {
+
+    public static void actualizarCliente() {
         System.out.println("\n--- ACTUALIZAR CLIENTE ---");
         System.out.print("Ingrese el ID del cliente a modificar: ");
         String idBusqueda = sc.nextLine();
@@ -83,8 +86,8 @@ public class Main {
         }
         System.out.println("Cliente no encontrado.");
     }
-        
-        public static void eliminarCliente() {
+
+    public static void eliminarCliente() {
         System.out.println("\n--- ELIMINAR CLIENTE ---");
         System.out.print("Ingrese el ID del cliente a eliminar: ");
         String idBusqueda = sc.nextLine();
@@ -98,7 +101,7 @@ public class Main {
         }
         System.out.println("Cliente no encontrado.");
     }
-        
+
     public static void crearLibro() {
 
         System.out.println("\n--- CREAR LIBRO ---");
@@ -121,7 +124,7 @@ public class Main {
 
         System.out.println("Libro creado correctamente.");
     }
-    
+
     public static void listarLibros() {
 
         System.out.println("\n--- LISTA DE LIBROS ---");
@@ -135,8 +138,8 @@ public class Main {
             System.out.println(libro);
         }
     }
-    
-        public static Libro buscarLibro(String codigo) {
+
+    public static Libro buscarLibro(String codigo) {
 
         for (Libro libro : libros) {
 
@@ -146,6 +149,36 @@ public class Main {
         }
 
         return null;
+    }
+
+    public static void actualizarLibro() {
+
+        System.out.println("\n--- ACTUALIZAR LIBRO ---");
+
+        System.out.print("Ingrese el código del libro: ");
+        String codigo = sc.nextLine();
+
+        Libro libro = buscarLibro(codigo);
+
+        if (libro == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        System.out.print("Nuevo título: ");
+        String titulo = sc.nextLine();
+
+        System.out.print("Nuevo autor: ");
+        String autor = sc.nextLine();
+
+        System.out.print("Nueva cantidad de páginas: ");
+        int cantidadPaginas = Integer.parseInt(sc.nextLine());
+
+        libro.setTitulo(titulo);
+        libro.setAutor(autor);
+        libro.setCantidadPaginas(cantidadPaginas);
+
+        System.out.println("Libro actualizado correctamente.");
     }
 
 }
