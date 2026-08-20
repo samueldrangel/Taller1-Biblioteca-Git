@@ -238,8 +238,8 @@ public class Main {
 
         System.out.println("Préstamo registrado correctamente.");
     }
-    
-        public static void devolucion() {
+
+    public static void devolucion() {
 
         System.out.println("\n--- DEVOLUCIÓN DE LIBRO ---");
 
@@ -259,6 +259,25 @@ public class Main {
         }
 
         System.out.println("No se encontró un préstamo activo para ese libro.");
+    }
+
+    public static void listarPrestamos() {
+
+        System.out.println("\n--- PRÉSTAMOS ACTIVOS ---");
+
+        boolean hayPrestamosActivos = false;
+
+        for (Prestamo prestamo : prestamos) {
+
+            if (prestamo.isActivo()) {
+                System.out.println(prestamo);
+                hayPrestamosActivos = true;
+            }
+        }
+
+        if (!hayPrestamosActivos) {
+            System.out.println("No hay préstamos activos.");
+        }
     }
 
 }
